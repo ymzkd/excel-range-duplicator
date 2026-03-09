@@ -73,8 +73,8 @@ function App() {
       setStatus({ message: "正の整数を入力してください。", intent: "error" });
       return;
     }
-    if (colCount > 100 || rowCount > 100) {
-      setStatus({ message: "各方向の最大複製数は100です。", intent: "error" });
+    if (colCount > 999 || rowCount > 999) {
+      setStatus({ message: "各方向の最大複製数は999です。", intent: "error" });
       return;
     }
 
@@ -158,14 +158,14 @@ function App() {
           <SpinButton
             value={colCount}
             min={1}
-            max={100}
+            max={999}
             onChange={(_, data) => {
               if (data.value !== undefined && data.value !== null) {
                 setColCount(data.value);
               } else if (data.displayValue !== undefined) {
                 const parsed = parseFloat(data.displayValue);
                 if (!isNaN(parsed)) {
-                  setColCount(Math.min(100, Math.max(1, Math.round(parsed))));
+                  setColCount(Math.min(999, Math.max(1, Math.round(parsed))));
                 }
               }
             }}
@@ -176,14 +176,14 @@ function App() {
           <SpinButton
             value={rowCount}
             min={1}
-            max={100}
+            max={999}
             onChange={(_, data) => {
               if (data.value !== undefined && data.value !== null) {
                 setRowCount(data.value);
               } else if (data.displayValue !== undefined) {
                 const parsed = parseFloat(data.displayValue);
                 if (!isNaN(parsed)) {
-                  setRowCount(Math.min(100, Math.max(1, Math.round(parsed))));
+                  setRowCount(Math.min(999, Math.max(1, Math.round(parsed))));
                 }
               }
             }}
