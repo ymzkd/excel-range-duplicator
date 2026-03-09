@@ -162,6 +162,11 @@ function App() {
             onChange={(_, data) => {
               if (data.value !== undefined && data.value !== null) {
                 setColCount(data.value);
+              } else if (data.displayValue !== undefined) {
+                const parsed = parseFloat(data.displayValue);
+                if (!isNaN(parsed)) {
+                  setColCount(Math.min(100, Math.max(1, Math.round(parsed))));
+                }
               }
             }}
           />
@@ -175,6 +180,11 @@ function App() {
             onChange={(_, data) => {
               if (data.value !== undefined && data.value !== null) {
                 setRowCount(data.value);
+              } else if (data.displayValue !== undefined) {
+                const parsed = parseFloat(data.displayValue);
+                if (!isNaN(parsed)) {
+                  setRowCount(Math.min(100, Math.max(1, Math.round(parsed))));
+                }
               }
             }}
           />
